@@ -12,6 +12,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: "oggiamensa",
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Color(0x002A5896)),

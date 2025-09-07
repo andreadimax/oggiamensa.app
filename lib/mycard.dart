@@ -14,42 +14,48 @@ class MyCard extends StatelessWidget {
       elevation: 1,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(12),
-        side: BorderSide(
-          width: 0.1,
-        ),
+        side: BorderSide(width: 0.5, color: Colors.orangeAccent),
       ),
       child: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              children: [
-                Image.asset(
-                  'asset/images/icons/${dishtype.name.toLowerCase()}.png',
-                  width: 24,
-                  height: 24,
-                ),
-                SizedBox(width: 8),
-                Text(
-                  dishtype.name,
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontFamily: 'Arial',
-                    fontWeight: FontWeight.bold,
+        child: Container(
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage('asset/images/icons/${dishtype.name.toLowerCase()}.png'),
+              opacity: 0.4,
+              alignment: Alignment.bottomRight
+            ),
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                children: [
+                  Text(
+                    dishtype.name,
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontFamily: 'Arial',
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
-                ),
-              ],
-            ),
-            SizedBox(height: 8),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: content.map((child) => Text(
-                child,
-                style: TextStyle(fontSize: 16, fontFamily: 'Arial'),
-              )).toList(),
-            ),
-          ],
+                ],
+              ),
+              SizedBox(height: 8),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children:
+                    content
+                        .map(
+                          (child) => Text(
+                            child,
+                            style: TextStyle(fontSize: 16, fontFamily: 'Arial'),
+                          ),
+                        )
+                        .toList(),
+              ),
+            ],
+          ),
         ),
       ),
     );
