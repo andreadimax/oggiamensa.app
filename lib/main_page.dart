@@ -1,0 +1,112 @@
+import 'package:flutter/material.dart';
+import 'mycard.dart';
+import 'dishtype.dart';
+
+class MainPage extends StatelessWidget {
+  const MainPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Padding(
+        padding: const EdgeInsets.all(20.0),
+        child: Center(
+          child: Column(
+            children: [
+              SizedBox(height: 40),
+              ShaderMask(
+                shaderCallback:
+                    (bounds) => LinearGradient(
+                      colors: [
+                        Color.fromRGBO(175, 103, 249, 1),
+                        Color.fromRGBO(244, 150, 102, 1),
+                      ],
+                    ).createShader(bounds),
+                child: Text(
+                  "OGGIAMENSA",
+                  style: TextStyle(
+                    fontSize: 30,
+                    fontFamily: 'Arial',
+                    fontWeight: FontWeight.bold,
+                    decoration: TextDecoration.none,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+              SizedBox(height: 20),
+              Expanded(child:
+              Scrollbar(
+                child: ListView(
+                  padding:  const EdgeInsets.symmetric(vertical: 10.0),
+                  scrollDirection: Axis.vertical,
+                  children: [
+                    MyCard(
+                      dishtype: Dishtype.Primi,
+                      content: [
+                        "Pasta al pomodoro",
+                        "Risotto ai funghi",
+                      ],
+                    ),
+                    MyCard(
+                      dishtype: Dishtype.Secondi,
+                      content: [
+                        "Pollo arrosto",
+                        "Bistecca alla griglia",
+                        "Pesce al forno",
+                      ],
+                    ),
+                    MyCard(
+                      dishtype: Dishtype.Contorni,
+                      content: [
+                        "Insalata mista",
+                        "Patate al forno",
+                        "Verdure grigliate",
+                      ],
+                    ),
+                    MyCard(
+                      dishtype: Dishtype.Rosticceria,
+                      content: [
+                        "Arancini di riso",
+                        "Supplì al telefono",
+                        "Crocchette di patate",
+                      ],
+                    ),
+                  ],
+                ),
+              ))
+              ,
+              OutlinedButton(
+                onPressed: () {},
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Icon(Icons.send),
+                    SizedBox(width: 8),
+                    Text("Manda segnalazione"),
+                  ],
+                ),
+              )
+            ],
+          ),
+        ),
+      ),
+      bottomNavigationBar: NavigationBar(
+        destinations: <Widget>[
+          const NavigationDestination(
+            icon: Icon(Icons.menu_book_rounded),
+            label: 'Menu',
+          ),
+          NavigationDestination(
+            icon: Image.asset(
+              'asset/images/icons/shopping-bag.png',
+              width: 24,
+              height: 24,
+            ),
+            label: 'Launchbox',
+          ),
+          const NavigationDestination(icon: Icon(Icons.info), label: 'Info'),
+        ],
+      ),
+    );
+  }
+}
