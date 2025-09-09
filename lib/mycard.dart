@@ -23,7 +23,7 @@ class MyCard extends StatelessWidget {
             image: DecorationImage(
               image: AssetImage('asset/images/icons/${dishtype.name.toLowerCase()}.png'),
               opacity: 0.4,
-              alignment: Alignment.bottomRight
+              alignment: Alignment.topRight,
             ),
           ),
           child: Column(

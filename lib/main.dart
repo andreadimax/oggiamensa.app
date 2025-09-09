@@ -15,7 +15,12 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: "oggiamensa",
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Color(0x002A5896)),
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: Color.fromRGBO(243, 126, 17, 1),
+        ),
+        navigationBarTheme: NavigationBarThemeData(
+          indicatorColor: Color.fromRGBO(255, 131, 49, 1), // dark orange
+        ),
         useMaterial3: true
       ),
       home: const MainPage(),

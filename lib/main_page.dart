@@ -34,49 +34,61 @@ class MainPage extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 20),
-              Expanded(child:
-              Scrollbar(
-                child: ListView(
-                  padding:  const EdgeInsets.symmetric(vertical: 10.0),
-                  scrollDirection: Axis.vertical,
-                  children: [
-                    MyCard(
-                      dishtype: Dishtype.Primi,
-                      content: [
-                        "Pasta al pomodoro",
-                        "Risotto ai funghi",
-                      ],
-                    ),
-                    MyCard(
-                      dishtype: Dishtype.Secondi,
-                      content: [
-                        "Pollo arrosto",
-                        "Bistecca alla griglia",
-                        "Pesce al forno",
-                      ],
-                    ),
-                    MyCard(
-                      dishtype: Dishtype.Contorni,
-                      content: [
-                        "Insalata mista",
-                        "Patate al forno",
-                        "Verdure grigliate",
-                      ],
-                    ),
-                    MyCard(
-                      dishtype: Dishtype.Rosticceria,
-                      content: [
-                        "Arancini di riso",
-                        "Supplì al telefono",
-                        "Crocchette di patate",
-                      ],
-                    ),
-                  ],
+              Expanded(
+                child: Scrollbar(
+                  child: ListView.separated(
+                    padding: const EdgeInsets.symmetric(vertical: 10.0),
+                    scrollDirection: Axis.vertical,
+                    itemBuilder: (context, index) {
+                      final cards = [
+                        MyCard(
+                          dishtype: Dishtype.Primi,
+                          content: ["Pasta al pomodoro", "Risotto ai funghi"],
+                        ),
+                        MyCard(
+                          dishtype: Dishtype.Secondi,
+                          content: [
+                            "Pollo arrosto",
+                            "Bistecca alla griglia",
+                            "Pesce al forno",
+                          ],
+                        ),
+                        MyCard(
+                          dishtype: Dishtype.Contorni,
+                          content: [
+                            "Insalata mista",
+                            "Patate al forno",
+                            "Verdure grigliate",
+                          ],
+                        ),
+                        MyCard(
+                          dishtype: Dishtype.Rosticceria,
+                          content: [
+                            "Arancini di riso",
+                            "Supplì al telefono",
+                            "Crocchette di patate",
+                          ],
+                        ),
+                      ];
+                      return cards[index];
+                    },
+                    separatorBuilder:
+                        (context, index) => const SizedBox(height: 4),
+                    itemCount: 4,
+                  ),
                 ),
-              ))
-              ,
+              ),
               OutlinedButton(
                 onPressed: () {},
+                style: ButtonStyle(
+                  foregroundColor: WidgetStatePropertyAll<Color>(
+                    Colors.orangeAccent,
+                  ),
+                  backgroundColor: WidgetStatePropertyAll<Color>(Colors.white),
+                  side: WidgetStatePropertyAll<BorderSide>(
+                    BorderSide(color: Colors.orangeAccent),
+                  ),
+                ),
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
@@ -85,7 +97,7 @@ class MainPage extends StatelessWidget {
                     Text("Manda segnalazione"),
                   ],
                 ),
-              )
+              ),
             ],
           ),
         ),
