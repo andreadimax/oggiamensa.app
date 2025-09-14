@@ -2,7 +2,7 @@
     <application
         android:label="oggiamensa"
         android:name="${applicationName}"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@mipmap/alien">
         <activity
             android:name=".MainActivity"
             android:exported="true"

@@ -1,14 +1,20 @@
 import 'package:flutter/material.dart';
 import 'mycard.dart';
 import 'dishtype.dart';
+import 'launchbox.dart';
+import 'info.dart';
 
-class MainPage extends StatelessWidget {
+class MainPage extends StatefulWidget {
   const MainPage({super.key});
 
   @override
+  State<MainPage> createState() => _MainPageContentState();
+}
+
+class MenuBody extends StatelessWidget {
+  @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Padding(
+    return Padding(
         padding: const EdgeInsets.all(20.0),
         child: Center(
           child: Column(
@@ -101,8 +107,38 @@ class MainPage extends StatelessWidget {
             ],
           ),
         ),
-      ),
+      );
+  }
+}
+
+class _MainPageContentState extends State<MainPage>{
+
+  final List<Widget> bodies = [
+    MenuBody(),
+    Launchbox(),
+    InfoBody()
+  ];
+
+  //state
+  int pageIndex = 0;
+
+  //setstate
+  void _setBody(int index) {
+    setState(() {
+      pageIndex = index;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: bodies[pageIndex],
       bottomNavigationBar: NavigationBar(
+        selectedIndex: pageIndex,
+        onDestinationSelected: (int index) {
+          _setBody(index);
+          print(index);
+        },
         destinations: <Widget>[
           const NavigationDestination(
             icon: Icon(Icons.menu_book_rounded),
