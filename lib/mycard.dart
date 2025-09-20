@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'dishtype.dart';
 
 class MyCard extends StatelessWidget {
@@ -33,10 +34,12 @@ class MyCard extends StatelessWidget {
                 children: [
                   Text(
                     dishtype.name,
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontFamily: 'Arial',
-                      fontWeight: FontWeight.bold,
+                    style: GoogleFonts.poppins(
+                      textStyle: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        color: Color.fromRGBO(243, 126, 17, 1),
+                      ),
                     ),
                   ),
                 ],

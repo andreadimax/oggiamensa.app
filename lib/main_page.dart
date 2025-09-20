@@ -137,7 +137,6 @@ class _MainPageContentState extends State<MainPage>{
         selectedIndex: pageIndex,
         onDestinationSelected: (int index) {
           _setBody(index);
-          print(index);
         },
         destinations: <Widget>[
           const NavigationDestination(
