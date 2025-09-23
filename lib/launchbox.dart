@@ -1,12 +1,33 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:oggiamensa/mycard.dart';
 
-class Launchbox extends StatelessWidget {
+class Launchbox extends StatefulWidget {
+
   const Launchbox({super.key});
 
   @override
+  _LaunchboxState createState() => _LaunchboxState();
+}
+
+class _LaunchboxState extends State<Launchbox> {
+
+
+  //state
+  List<String> launchboxMenu = [
+    "Insalata di riso",
+    "Panino con prosciutto e formaggio",
+    "Yogurt con frutta"
+  ];
+
+  //setState
+  void updateLaunchboxMenu(List<String> newMenu) {
+    setState(() {
+      launchboxMenu = newMenu;
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
-    final screenWidth = MediaQuery.of(context).size.width;
     return SafeArea(
       child: Padding(
         padding: const EdgeInsets.all(20.0),
@@ -43,37 +64,25 @@ class Launchbox extends StatelessWidget {
               ),
               Flexible(
                 flex: 1,
-                child: Card(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  color: Colors.white,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.all(10.0),
-                        child: Image.asset(
-                            "asset/images/icons/rice.png",
-                            width: screenWidth * 0.15,
-                          ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(10.0),
-                        child: Text(
-                          "Insalata di riso",
-                          style: GoogleFonts.poppins(
-                            textStyle: TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
+                child: MyLittleCard(
+                  imagePath: "asset/images/icons/rice-bowl.png",
+                  title: launchboxMenu[0])
               ),
+              Flexible(
+                flex: 1,
+                child: MyLittleCard(
+                  imagePath: "asset/images/icons/sandwich.png",
+                  title: launchboxMenu[1],
+                )
+              ),
+              Flexible(
+                flex: 1,
+                child: MyLittleCard(
+                  imagePath: "asset/images/icons/yogurt.png",
+                  title: launchboxMenu[2],
+                )
+              )
+
             ],
           ),
         ),

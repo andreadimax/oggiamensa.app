@@ -11,7 +11,29 @@ class MainPage extends StatefulWidget {
   State<MainPage> createState() => _MainPageContentState();
 }
 
-class MenuBody extends StatelessWidget {
+class MenuBody extends StatefulWidget {
+  const MenuBody({super.key});
+
+  @override
+  State<MenuBody> createState() => _MenuBodyState();
+}
+
+class _MenuBodyState extends State<MenuBody> {
+
+  //state
+  List<List<String>> menu = [
+    ["Pasta al pomodoro", "Risotto ai funghi"],
+    ["Pollo arrosto", "Bistecca alla griglia", "Pesce al forno"],
+    ["Insalata mista", "Patate al forno", "Verdure grigliate"],
+    ["Arancini di riso", "Supplì al telefono", "Crocchette di patate"],
+  ];
+
+  void updateMenu(List<List<String>> newMenu) {
+    setState(() {
+      menu = newMenu;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -49,31 +71,19 @@ class MenuBody extends StatelessWidget {
                       final cards = [
                         MyCard(
                           dishtype: Dishtype.Primi,
-                          content: ["Pasta al pomodoro", "Risotto ai funghi"],
+                          content: menu[0],
                         ),
                         MyCard(
                           dishtype: Dishtype.Secondi,
-                          content: [
-                            "Pollo arrosto",
-                            "Bistecca alla griglia",
-                            "Pesce al forno",
-                          ],
+                          content: menu[1],
                         ),
                         MyCard(
                           dishtype: Dishtype.Contorni,
-                          content: [
-                            "Insalata mista",
-                            "Patate al forno",
-                            "Verdure grigliate",
-                          ],
+                          content: menu[2]
                         ),
                         MyCard(
                           dishtype: Dishtype.Rosticceria,
-                          content: [
-                            "Arancini di riso",
-                            "Supplì al telefono",
-                            "Crocchette di patate",
-                          ],
+                          content: menu[3],
                         ),
                       ];
                       return cards[index];
